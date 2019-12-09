@@ -1,21 +1,13 @@
-<html>
-    <head>
-        <title>Django </title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">El coto la tiene chica</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
+
+{% block content %}
     {% for post in posts %}
-        <div>
-            <p> publicado: {{ post.published_date }}</p>
-            <h2><a href="">{{ post.title }}</a></h2>
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
-            <p>published: 06.07.2018, 12:14</p>
-            <h2><a href="">My Josefa</a></h2>
-            <p>Josefitaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
         </div>
     {% endfor %}
-    
-    </body>
-</html>
+{% endblock %}
